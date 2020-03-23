@@ -1,17 +1,14 @@
 # leetcode_everyweek
-#leetcode 풀이 학습
+#leetcode
 
-*난이도
-- 난이도(Easy, Medium, Hard)에 상관없이 leetcode의 문제풀이 순서대로 푼다.
+*Difficulty
+- Easy, Medium, Hard
 
-*코딩언어
-- C/C++ 에서 선택한다.
-- 우선순위는 C++이다.
+*Language
+- C/C++/C#
 
-*제한시간
-- 한문제당 1시간의 시간이 주어진다.
+*Required Time
+- Must be 1 hour less
 
-*풀이순서
-- 일단 문제를 이해한 수준에서 본문에 정리한다.(주석처리)
-- 문제를 풀고, 케이스 100% 완료를 원칙으로 한다.
-
+*Must Required
+- Case 100% Complete
