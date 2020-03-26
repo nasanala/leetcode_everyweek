@@ -1,0 +1,97 @@
+/*
+
+Given a string, find the length of the longest substring without repeating characters.
+
+Example 1:
+
+Input: "abcabcbb"
+Output: 3 
+Explanation: The answer is "abc", with the length of 3. 
+Example 2:
+
+Input: "bbbbb"
+Output: 1
+Explanation: The answer is "b", with the length of 1.
+Example 3:
+
+Input: "pwwkew"
+Output: 3
+Explanation: The answer is "wke", with the length of 3. 
+             Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+
+
+/*
+
+Spending Time : 1 hour more
+986 / 987 test cases passed.
+
+Last case was failed because it is too long input.
+Status: Time Limit Exceeded
+
+
+*/
+
+
+
+
+
+
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {                
+        int string_size = s.size();
+        string cc;
+        string aa;
+        vector<string> mapAll(string_size);
+        int count_test = 0;
+        int count_final =0;
+        bool test_1 = true;      
+        
+        for(int i=0; i<s.size(); i++)        
+        {
+            aa = s.substr(i, 1);        
+            count_test++;
+            mapAll.clear();
+            mapAll.push_back(aa);
+            for(int j=i+1; j<s.size(); j++)
+            {
+                string cc = aa;
+                string bb = s.substr(j, 1);         
+                if(cc != bb)
+                {
+                    for(int h=0; h<mapAll.size(); h++)
+                    {                      
+                        if(mapAll[h] == bb)
+                        {
+
+                            test_1 = false;
+                        }                        
+                    }               
+                    if(test_1)
+                    {
+                        mapAll.push_back(bb);
+                        count_test++;                        
+                    }
+                    else
+                    {
+                        test_1 =true;
+                        break;
+                    }
+                    test_1 =true;
+                }
+                else
+                {
+                    break;
+                }
+                aa = bb;
+            }                        
+            if(count_test > count_final)
+            {
+                count_final = count_test;
+            }
+            count_test = 0;
+        }
+        return count_final;
+    }
+};
