@@ -1,0 +1,195 @@
+/*
+Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
+
+Symbol       Value
+I             1
+V             5
+X             10
+L             50
+C             100
+D             500
+M             1000
+For example, two is written as II in Roman numeral, just two one's added together. Twelve is written as, XII, which is simply X + II. The number twenty seven is written as XXVII, which is XX + V + II.
+
+Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:
+
+I can be placed before V (5) and X (10) to make 4 and 9. 
+X can be placed before L (50) and C (100) to make 40 and 90. 
+C can be placed before D (500) and M (1000) to make 400 and 900.
+Given an integer, convert it to a roman numeral. Input is guaranteed to be within the range from 1 to 3999.
+
+Example 1:
+
+Input: 3
+Output: "III"
+Example 2:
+
+Input: 4
+Output: "IV"
+Example 3:
+
+Input: 9
+Output: "IX"
+Example 4:
+
+Input: 58
+Output: "LVIII"
+Explanation: L = 50, V = 5, III = 3.
+Example 5:
+
+Input: 1994
+Output: "MCMXCIV"
+Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
+
+*/
+
+
+/*
+
+spending time : 2 hours
+
+*/
+
+
+
+class Solution {
+public:
+    string intToRoman(int num) {
+        string ans;
+        if (num > 3999)
+        {
+            return ans;
+        }
+
+        if (num >= 1000)
+        {
+            int asdfg = num / 1000;
+            for (int j = 0; j < asdfg; j++)
+            {
+                ans += 'M';
+            }
+            num = num % 1000;
+        }
+
+        int input = num;
+
+        int i = 1;
+        int v = 5;
+        int x = 10;
+        int l = 50;
+        int c = 100;
+        int d = 500;
+        int m = 1000;
+
+        
+
+        if (d <= input && input < m)
+        {
+            if (input / 100 == 9)
+            {
+                ans += "CM";
+                input = input % 100;
+            }
+            else
+            {
+                int d_1 = input / d;
+                for (i = 0; i < d_1; i++)
+                {
+                    ans += "D";
+                }     
+                input = input % 500;
+            }
+            
+
+        }
+
+        if (c <= input && input < d)
+        {
+            if (input / 100 == 4)
+            {
+                ans += "CD";
+            }
+            else
+            {
+                int c_1 = input / c;
+                for (i = 0; i < c_1; i++)
+                {
+                    ans += "C";
+                }                
+            }
+            input = input % 100;
+        }
+
+        
+        if (l <= input && input < c)
+        {
+            if (input / 10 == 9)
+            {
+                ans += "XC";
+                input = input % 10;
+            }
+            else
+            {
+                int b_1 = input / l;
+                for (i = 0; i < b_1; i++)
+                {
+                    ans += "L";
+                }                
+                input = input % 50;
+            }
+            
+        }
+
+        
+        if (x <= input && input < l)
+        {
+            if (input / 10 == 4)
+            {
+                ans += "XL";
+            }
+            else
+            {                
+                int a_12 = input / x;
+                for (i = 0; i < a_12; i++)
+                {
+                    ans += "X";
+                }
+            }
+            input = input % 10;
+        }
+
+        if (v <= input && input <= x)
+        {
+            if (input == x - 1)
+            {
+                ans += "IX";
+                return ans;
+            }
+            else
+            {
+                int res_v = input / v;
+                for (i = 0; i < res_v; i++)
+                {
+                    ans += "V";
+                }                
+            }
+            input = input % 5;
+        }
+        
+        if (input < v)
+        {
+            if (input == v - 1)
+            {
+                ans += "IV";
+            }
+            else
+            {
+                for (i = 0; i < input; i++)
+                {
+                    ans += "I";
+                }
+            }
+        }
+        return ans;
+    }
+};
